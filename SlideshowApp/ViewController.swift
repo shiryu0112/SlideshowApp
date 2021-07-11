@@ -92,6 +92,18 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let nextVC = segue.destination as! NextViewController
             nextVC.image = imageView.image
+        
+        if self.timer != nil {
+            // タイマーを停止する
+            self.timer.invalidate()
+            
+            // startTimer() の self.timer == nil で判断するために、 self.timer = nil としておく
+            self.timer = nil
+            
+            // 「戻るボタン」と「進むボタン」をタップできるようにしている
+            backButton.isEnabled = true
+            goButton.isEnabled = true
+        }
     }
     
     
